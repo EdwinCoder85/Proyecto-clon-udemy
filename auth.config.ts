@@ -7,7 +7,7 @@ import prisma from "@/libs/prisma";
 import bcrypt from "bcrypt";
 
 export const authConfig: NextAuthConfig = {
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
   pages: {
     signIn: "/auth/login",
   },

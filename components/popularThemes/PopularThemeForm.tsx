@@ -10,10 +10,10 @@ import Select from "react-select";
 import Loading from "../Loading";
 import { createPopularTheme } from "@/actions/popularThemes-actions";
 import { useEffect, useState } from "react";
+import { getCoursesByCategoryId } from '@/actions/getCoursesByCategoryId';
 
 type Props = {
   categories: Category[];
-  courses: Course[];
 };
 
 type FormData = {
@@ -39,13 +39,32 @@ const themes: Theme[] = [
 
 export default function PopularThemeForm({
   categories,
-  courses,
 }: Props) {
   const [isClient, setIsClient] = useState(false);
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    if (selectedCategoryId) {
+      const fetchCourses = async () => {
+        try {
+          const fetchedCourses  = await getCoursesByCategoryId(selectedCategoryId);
+          setCourses(fetchedCourses);
+        } catch (error) {
+          console.error("Error fetching courses: ", error);
+          toast.error("Error loading courses");
+        }
+      };
+
+      fetchCourses();
+    } else {
+      setCourses([]);
+    }
+  }, [selectedCategoryId]);
 
   const {
     handleSubmit,
@@ -85,8 +104,10 @@ export default function PopularThemeForm({
                 onChange={(selectedOption) => {
                   if (selectedOption) {
                     setValue("categories", selectedOption.value);
+                    setSelectedCategoryId(selectedOption.value); 
                   } else {
                     setValue("categories", "");
+                    setSelectedCategoryId(null);
                   }
                 }}
               />
