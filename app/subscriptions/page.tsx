@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/20/solid";
+import { toast } from "sonner";
 
 const frequencies = [
   { value: "mensual", label: "Mensual", priceSuffix: "/mensual" },
@@ -77,6 +78,38 @@ const tiers = [
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
+
+async function handleSubscription(frequency: { value: string }, tier: { price_id_month: string, price_id_year: string }) {
+  try {
+    const res = await fetch("/api/checkout/subscription", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        priceId: frequency.value === "mensual" ? tier.price_id_month : tier.price_id_year,
+      }),
+    });
+
+    if (res.redirected) {
+      window.location.href = res.url;
+      return;
+    }
+
+    const data = await res.json();
+    if (data.error) {
+      toast.error("Necesita iniciar sesión para suscribirse.");
+      return;
+    }
+
+    if (data && data.url) {
+      window.location.href = data.url;
+    }
+  } catch (error) {
+    toast.error("Algo salió mal. Inténtalo de nuevo.");
+  }
+}
+
 
 export default function Example() {
   const [frequency, setFrequency] = useState(frequencies[0]);
@@ -154,24 +187,7 @@ export default function Example() {
               </p>
               <button
                 type="button"
-                // href={tier.href}
-                onClick={async () => {
-                  const res = await fetch("/api/checkout/subscription", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      priceId:
-                        frequency.value === "mensual"
-                          ? tier.price_id_month
-                          : tier.price_id_year,
-                    }),
-                  });
-                  const data = await res.json();
-
-                  window.location.href = data.url;
-                }}
+                onClick={() => handleSubscription(frequency, tier)}
                 aria-describedby={tier.id}
                 className={classNames(
                   tier.mostPopular

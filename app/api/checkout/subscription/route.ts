@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 400 });
     }
-
+  
     const result = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       metadata: {
