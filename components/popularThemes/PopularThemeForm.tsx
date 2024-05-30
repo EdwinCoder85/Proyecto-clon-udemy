@@ -78,9 +78,9 @@ export default function PopularThemeForm({
     const res = await createPopularTheme(data);
 
     if (res.ok) {
-      toast.success("Registro realizado");
+      toast.success("Tema registrado exitosamente.");
     } else {
-      toast.error("Ocurrio problemas en el registro");
+      toast.error("El tema ya está registrado.");
     }
   };
 
