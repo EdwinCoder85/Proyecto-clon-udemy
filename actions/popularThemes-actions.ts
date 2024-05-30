@@ -8,6 +8,21 @@ export async function createPopularTheme(data: {
   themes: string;
 }) {
   try {
+    // Check if the popular theme already exists
+    const existingTheme = await prisma.courseCategory.findFirst({
+      where: {
+        courseId: data.courses,
+        categoryId: data.categories,
+        popularTheme: data.themes,
+      },
+    });
+
+    if (existingTheme) {
+      // Theme already registered
+      return { ok: false, message: "El tema ya está registrado." };
+    }
+
+    // Create a new popular theme
     await prisma.courseCategory.create({
       data: {
         courseId: data.courses,
@@ -16,8 +31,9 @@ export async function createPopularTheme(data: {
       },
     });
 
-    return { ok: true };
+    return { ok: true, message: "Tema registrado exitosamente." };
   } catch (error) {
-    return { ok: false, message: error };
+    return { ok: false, message: "Error al registrar el tema." };
   }
 }
+
