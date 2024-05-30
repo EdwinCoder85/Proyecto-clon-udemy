@@ -19,7 +19,7 @@ export async function POST(request: Request) {
         },
       },
     });
-  
+
     const coursesWithQuantity = courses.map((course) => {
       const courseInCart = cart.find((p: any) => p.id === course.id);
 
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
         quantity: course.quantity,
       }))
     );
-   
+
     const result = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       metadata: {
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
       ],
       success_url: `${process.env.NEXTAUTH_URL}/success`,
       cancel_url: `${process.env.NEXTAUTH_URL}/cart`,
-      // pago por suscripción
+      // pago por compra de curso
       mode: "payment",
     });
     return NextResponse.json({ url: result.url });
