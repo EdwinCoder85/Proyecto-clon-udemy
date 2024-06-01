@@ -29,9 +29,10 @@ export default function ReviewForm({ courseId }: { courseId: string }) {
   });
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
+
     const res = await createReview(data, courseId);
 
-    if (res.ok) {
+    if (res?.ok) {
       toast.success("Calificación enviada");
       reset();
       setRating(1);

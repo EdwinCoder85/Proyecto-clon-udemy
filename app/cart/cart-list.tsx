@@ -3,38 +3,51 @@
 import { Button } from "@/components/ui";
 import { useCartStore } from "@/store/cartStore";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-// import { PaypalButton } from "./paypal-button";
+import cartEmpty from "../../public/cart_empty.svg";
 import Image from "next/image";
 import StartRate from "@/components/StartRate";
+import { toast } from "sonner";
 
-export function CartList() {
+export default function CartList() {
   const cart = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
 
   const { data: session } = useSession();
-  const router = useRouter();
 
   const handleCheckout = async () => {
-    if (!session) {
-      return router.push("/auth/login");
-    } else {
-      try {
-        const result = await fetch("/api/checkout", {
-          method: "POST",
-          body: JSON.stringify(cart),
-        });
-        const data = await result.json();
-        if (result.ok) {
-          cart.forEach((product) => {
-            removeFromCart(product);
-            localStorage.removeItem("cartStore");
-          });
-          window.location.href = data.url;
-        }
-      } catch (error) {
-        console.log(error);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cart),
+      });
+
+      const data = await res.json();
+
+      if (!session) {
+        toast.error("Necesita iniciar sesión para comprar.");
+        return;
       }
+
+      if (data && data.url) {
+        cart.forEach((product) => {
+          removeFromCart(product);
+          localStorage.removeItem("cartStore");
+        });
+        window.location.href = data.url;
+      }
+
+      // if (res.ok) {
+      //   cart.forEach((product) => {
+      //     removeFromCart(product);
+      //     localStorage.removeItem("cartStore");
+      //   });
+      //   window.location.href = data.url;
+      // }
+    } catch (error) {
+      toast.error("Algo salió mal. Inténtalo de nuevo.");
     }
   };
 
@@ -45,7 +58,21 @@ export function CartList() {
       </div>
       <div className="flex justify-between gap-x-10 max-w-screen-2xl">
         <div className="">
-          <span className="font-bold">{cart.length} cursos en la cesta</span>
+          {cart.length == 0 ? (
+            <div className="flex flex-col justify-center items-center mx-44 my-10">
+              <Image
+                src={cartEmpty}
+                alt="Carrito vacio"
+                className="w-60 h-60 object-cover object-center"
+                width={800}
+                height={800}
+                priority={true}
+              />
+              <span className="font-bold mt-5">No hay cursos en la cesta</span>
+            </div>
+          ) : (
+            <span className="font-bold">{cart.length} cursos en la cesta</span>
+          )}
           {cart.map((course) => (
             <article
               key={course.id}
@@ -95,7 +122,7 @@ export function CartList() {
           ))}
         </div>
         <div className="flex flex-col gap-y-4">
-          <span className="text-[#6a6f73] font-bold">Total:</span>
+          <span className="text-xl font-bold">Total:</span>
           <span className="text-3xl font-bold">
             {cart
               .reduce((acc, p) => acc + p.price * p.quantity, 0)
@@ -129,7 +156,6 @@ export function CartList() {
               Aplicar
             </button>
           </div>
-          {/* <PaypalButton /> */}
         </div>
       </div>
     </section>

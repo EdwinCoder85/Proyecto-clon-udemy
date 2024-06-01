@@ -35,7 +35,6 @@ export async function POST(request: NextRequest) {
       if (checkoutSessionCompleted.mode === "payment") {
 
         const userId = checkoutSessionCompleted.metadata!.userId as string;
-        console.log("userId", userId)
         const courses = JSON.parse(
           checkoutSessionCompleted.metadata!.products as string
         );
@@ -48,7 +47,6 @@ export async function POST(request: NextRequest) {
             email: true,
           },
         });
-        console.log("userFound", userFound)
 
         if (!userFound) {
           return NextResponse.json(
@@ -64,15 +62,12 @@ export async function POST(request: NextRequest) {
             },
           },
         });
-        console.log("courseDB",courseDB)
 
         const total = courseDB.reduce((acc, course) => {
           const courseInCart = courses.find((p: any) => p.id === course.id);
 
           return acc + course.price * courseInCart.quantity;
         }, 0);
-
-        console.log("total",total)
 
         const newOrder = await prisma.order.create({
           data: {
@@ -81,7 +76,7 @@ export async function POST(request: NextRequest) {
             status: "por verificar",
           },
         });
-        console.log("newOrder",newOrder)
+
 
         await prisma.orderDetails.createMany({
           data: courseDB.map((course) => ({

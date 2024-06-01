@@ -35,11 +35,11 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="bg-[#2d2f31] w-full h-96">
-      <div className="flex flex-col lg:flex-row mx-auto max-w-screen-lg">
-        <div className="lg:w-2/3 lg:h-[1500px]">
-          <div className="text-white py-10 px-5 flex flex-col h-96">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">{singleCourse.title}</h2>
-            <h3 className="text-lg lg:text-xl mb-4">{singleCourse.description}</h3>
+      <div className="flex flex-row mx-auto max-w-screen-lg">
+        <div className="w-2/3 h-[1500px]">
+          <div className="text-white py-10 flex flex-col h-96">
+            <h2 className="text-3xl font-bold mb-4">{singleCourse.title}</h2>
+            <h3 className="text-xl mb-4">{singleCourse.description}</h3>
             <div className="flex justify-start items-center gap-x-2 mb-4">
               {singleCourse.bestSeller ? (
                 <span className="text-xs text-slate-700 font-semibold bg-amber-200 py-1 px-2">
@@ -78,7 +78,7 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
             <ReviewGallery courseId={singleCourse.id} />
           </div>
         </div>
-        <div className="lg:w-1/3 lg:h-[1500px] px-6 py-8">
+        <div className="w-1/3  h-[1500px] px-6 py-8">
           <div className="border border-white w-full h-[800px] bg-white shadow shadow-slate-500">
             <Image
               src={singleCourse.imageUrl}

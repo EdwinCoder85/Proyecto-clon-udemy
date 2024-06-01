@@ -6,7 +6,6 @@ import Link from "next/link";
 import StartRate from "../StartRate";
 
 export default function CourseCard({ course }: { course: Course }) {
-  console.log({course})
 
   return (
     <div className="group relative flex flex-col overflow-hidden bg-white">

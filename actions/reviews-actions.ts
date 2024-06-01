@@ -19,9 +19,9 @@ export async function createReview(
           image: session?.user.image,
         },
       });
+      revalidatePath(`/course/${courseId}`);
+      return { ok: true };
     }
-    revalidatePath(`/course/${courseId}`);
-    return { ok: true };
   } catch (error) {
     return { ok: false, message: error };
   }

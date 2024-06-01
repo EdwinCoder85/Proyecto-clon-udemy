@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSession } from 'next-auth/react';
 import { RadioGroup } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { toast } from "sonner";
@@ -79,40 +80,37 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-async function handleSubscription(frequency: { value: string }, tier: { price_id_month: string, price_id_year: string }) {
-  try {
-    const res = await fetch("/api/checkout/subscription", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        priceId: frequency.value === "mensual" ? tier.price_id_month : tier.price_id_year,
-      }),
-    });
-
-    if (res.redirected) {
-      window.location.href = res.url;
-      return;
-    }
-
-    const data = await res.json();
-    if (data.error) {
-      toast.error("Necesita iniciar sesión para suscribirse.");
-      return;
-    }
-
-    if (data && data.url) {
-      window.location.href = data.url;
-    }
-  } catch (error) {
-    toast.error("Algo salió mal. Inténtalo de nuevo.");
-  }
-}
-
-
-export default function Example() {
+export default function Subcription() {
   const [frequency, setFrequency] = useState(frequencies[0]);
+  const { data: session } = useSession();
+
+  async function handleSubscription(frequency: { value: string }, tier: { price_id_month: string, price_id_year: string }) {
+    try {
+      const res = await fetch("/api/checkout/subscription", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          priceId: frequency.value === "mensual" ? tier.price_id_month : tier.price_id_year,
+        }),
+      });
+  
+      const data = await res.json();
+
+
+      if (!session) {
+        toast.error("Necesita iniciar sesión para suscribirse.");
+        return;
+      }
+  
+      if (data && data.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      toast.error("Algo salió mal. Inténtalo de nuevo.");
+    }
+  }
 
   return (
     <div className="bg-white py-24 sm:py-32">
