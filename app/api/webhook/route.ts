@@ -10,7 +10,7 @@ const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET as string;
 export async function POST(request: NextRequest) {
   const body = await request.text();
   const sig = request.headers.get("stripe-signature");
-
+  console.log(body)
   if (!sig) {
     return NextResponse.json(
       { "Webhook Error": "No signature" },
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
         const courses = JSON.parse(
           checkoutSessionCompleted.metadata!.products as string
         );
-
+        console.log(courses, userId)
         const userFound = await prisma.user.findUnique({
           where: {
             id: userId,

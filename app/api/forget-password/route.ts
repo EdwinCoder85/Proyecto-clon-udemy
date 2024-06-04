@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       expiresIn: "86400",
     });
 
-    const resetPasswordLink = `http://localhost:3000/auth/change-password?token=${token}`;
+    const resetPasswordLink = `${process.env.NEXTAUTH_URL}/auth/change-password?token=${token}`;
     const userFirstname = tokenData.userName
 
     await resend.emails.send({
