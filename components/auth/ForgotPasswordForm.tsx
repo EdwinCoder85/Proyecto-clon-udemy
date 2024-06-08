@@ -47,15 +47,15 @@ export default function ForgotPasswordForm () {
   };
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-md p-4">
       <div className="mb-5">
         <h2 className="text-2xl font-semibold">Forgot password?</h2>
         <p className="text-gray-500 text-sm">
           Please enter your email to create new password
         </p>
       </div>
-      <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col my-2">
+      <form className="w-[300px] lg:w-full" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col mt-2 mb-5">
           <Input type="text" placeholder="Email" {...register("email")}/>
           {errors.email && (
             <span className="text-red-500 text-xs">

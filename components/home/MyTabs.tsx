@@ -16,7 +16,7 @@ const Tabs: React.FC<TabProps> = ({ tabs }) => {
         {tabs.map((tab, index) => (
           <button
             key={index}
-            className={`text-xl font-bold py-2 rounded block leading-normal ${
+            className={`text-xl font-bold lg:py-2 rounded block leading-normal ${
               activeTab === tab ? "text-black" : "text-primary-600 bg-white"
             }`}
             onClick={() => setActiveTab(tab)}
@@ -30,7 +30,7 @@ const Tabs: React.FC<TabProps> = ({ tabs }) => {
         <div className="">
           <div className="tab-content tab-space">
             <div className={activeTab === tabs[0] ? "block" : "hidden"}>
-              <div className=" text-left border-2 border-gray-300 p-7">
+              <div className=" text-left border-2 border-gray-300 p-4">
                 <div className="">
                   <h2 className="text-2xl font-bold mb-2">
                     Amplía tus oportunidades profesionales con Python
@@ -158,7 +158,7 @@ const Tabs: React.FC<TabProps> = ({ tabs }) => {
                   >
                     Explora {tabs[6]}
                   </button>
-                  <div className="flex gap-4 flex-wrap lg:flex-no-wrap">
+                  <div className="flex gap-3 flex-wrap lg:flex-no-wrap">
                     {/* <TabPageByPopularTheme categoryName={tabs[6]} /> */}
                     <TabPageByPopularTheme categoryName={"Dibujo"} />
                   </div>

@@ -1,9 +1,11 @@
-export { getReviewsByCourse } from "./getReviewsByCourse";
-export { getCoursesByCategory } from "./getCoursesByCategory";
 export { getAllCategories } from "./getAllCategories";
+export { getAllChapters} from "./getAllChapters";
 export { getAllCourses } from "./getAllCourses";
 export { getAllUsers } from "./getAllUsers";
-export { getCoursesByPopularTheme } from "./getCoursesByPopularTheme";
-export { getChaptersByCourseId } from "./getChaptersByCourseId";
-export { getSingleCourse } from "./getSingleCourse";
 export { getAttachmentsByChapterId } from "./getAttachmentsByChapterId";
+export { getChaptersByCourseId } from "./getChaptersByCourseId";
+export { getCoursesByCategoryName } from "./getCoursesByCategoryName";
+export { getCoursesByCategoryId } from "./getCoursesByCategoryId";
+export { getCoursesByPopularTheme } from "./getCoursesByPopularTheme";
+export { getSingleCourse } from "./getSingleCourse";
+export { getReviewsByCourse } from "./getReviewsByCourse";

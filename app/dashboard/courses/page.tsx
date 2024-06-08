@@ -5,9 +5,6 @@ import prisma from "@/libs/prisma";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui";
 import CourseTable from "@/components/courses/CoursesTable";
-import { getCoursesByCategory } from '@/actions';
-
-
 
 // async function loadProducts() {
 //   const session = await auth();
@@ -52,7 +49,7 @@ export default async function DashboardProductsPage() {
   // }
 
   return (
-    <div className="px-4 py-6 sm:px-6 lg:px-8 h-[calc(100vh-5.4rem)] w-[calc(100vw-15rem)] overflow-y-scroll select-none">
+    <div className="px-4 py-6 sm:px-6 lg:px-8 h-[calc(100vh-5.4rem)] lg:w-[calc(100vw-15rem)] overflow-y-scroll select-none">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-3xl text-center font-bold leading-6 text-primary-600">

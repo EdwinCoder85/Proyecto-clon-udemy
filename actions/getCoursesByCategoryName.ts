@@ -2,7 +2,7 @@
 
 import prisma from '@/libs/prisma';
 
-export async function getCoursesByCategory( categoryName : string) {
+export async function getCoursesByCategoryName( categoryName : string) {
       const courses = await prisma.course.findMany({
     where: {
       courseCategory: {

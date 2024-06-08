@@ -5,6 +5,7 @@ import { Avatar, Button, Modal, Table } from "../ui";
 import { useState } from "react";
 import { toast } from "sonner";
 import { deleteCourse } from '@/actions/courses-actions';
+import { classNames } from '@/libs/classNames';
 
 interface Props {
   courses: Course[];

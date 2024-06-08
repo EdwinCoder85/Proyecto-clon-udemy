@@ -112,11 +112,11 @@ export default function CourseForm({ course, categories }: Props) {
   };
 
   return (
-    <section className="h-[calc(100vh-7rem)] flex flex-col items-center justify-center">
+    <section className="h-full lg:h-[calc(100vh-7rem)] flex flex-col items-center justify-center">
       <Card>
-        <form className="w-full select-none" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-row gap-x-4">
-            <div className="w-96">
+        <form className="w-[300px] lg:w-full select-none" onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex flex-col lg:flex-row gap-x-4">
+            <div className="">
               <Label>Nombre del Curso</Label>
               <Textarea
                 rows={3}
@@ -186,10 +186,10 @@ export default function CourseForm({ course, categories }: Props) {
                 </span>
               )}
             </div>
-            <div className="w-96">
+            <div className="">
               <Label>Categoría</Label>
               <select
-                className="bg-gray-100 rounded-xl w-full px-4 py-3 mb-2 outline-none"
+                className="bg-gray-100 rounded-xl w-[300px] lg:w-full px-4 py-3 mb-2 outline-none"
                 value={selectedCategory}
                 {...register("categories")}
                 onChange={handleChange}

@@ -24,7 +24,7 @@ export default function TabPageByPopularTheme({ categoryName }: Props) {
   }, [categoryName]);
 
   return (
-    <div className="flex gap-4 flex-wrap lg:flex-no-wrap">
+    <div className="flex gap-3 flex-wrap lg:flex-no-wrap">
       {courses.map((course) => (
         <CourseCard key={course.id} course={course} />
       ))}

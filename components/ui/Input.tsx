@@ -8,9 +8,9 @@ export const Input = forwardRef<
 >((props, ref) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <div className="relative">
+    <div className="relative w-[300px] md:w-[450px] lg:w-full">
       <input
-        className="bg-gray-100 rounded-xl w-full px-4 py-3 outline-none pr-10"
+        className="bg-gray-100 rounded-xl w-[300px] md:w-[450px] lg:w-full px-4 py-3 outline-none pr-10"
         {...props}
         type={props.type === "password" && showPassword ? "text" : props.type}
         ref={ref}

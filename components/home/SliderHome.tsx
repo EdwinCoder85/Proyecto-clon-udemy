@@ -74,11 +74,11 @@ export default function SliderHome() {
               height={3000}
               priority={true}
             />
-            <div className="absolute bg-white top-16 left-20 px-6 py-8 flex flex-col items-start justify-center shadow-lg h-auto w-[480px]">
-              <h2 className="text-3xl font-bold mb-2">{course.name}</h2>
-              <h4 className="text-lg">{course.description}</h4>
+            <div className="absolute bg-white bottom-8 left-4 lg:top-16 lg:left-20 p-4 lg:px-6 lg:py-8 flex flex-col items-start justify-center shadow-lg h-auto lg:h-80 w-[320px] lg:w-[480px]">
+              <h2 className="text-base lg:text-2xl font-bold mb-2">{course.name}</h2>
+              <h4 className="text-xs lg:text-lg">{course.description}</h4>
               {course.href && (
-                <span className="bg-black text-white font-bold px-3 py-4 mt-4">
+                <span className="bg-black text-base lg:text-xl text-white lg:font-semibold py-1 px-2 lg:px-3 lg:py-4 mt-2 lg:mt-4">
                   <Link href={course.href}>{course.text}</Link>
                 </span>
               )}

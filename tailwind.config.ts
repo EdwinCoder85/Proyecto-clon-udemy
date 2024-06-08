@@ -21,7 +21,21 @@ const config: Config = {
           700: '#0495E9',
           800: '#0487D3',
           900: '#0076BA',
+          DEFAULT: "hsl(var(--primary))",
         },
+        background: {
+          DEFAULT: "hsl(var(--background))",
+          foreground: "hsl(var(--background-foreground))",
+        },
+        text: {
+          DEFAULT: "hsl(var(--text))",
+        },
+      },
+      borderRadius: {
+        "4xl": "2rem",
+      },
+      transitionDuration: {
+        DEFAULT: "150ms",
       }
     },
   },

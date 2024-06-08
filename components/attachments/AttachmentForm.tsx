@@ -77,9 +77,9 @@ export default function AttachmentForm({ courses }: Props) {
   return (
     <section className="h-[calc(100vh-7rem)] flex flex-col items-center justify-center">
       <Card>
-        <form className="w-full select-none" onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-[300px] lg:w-full select-none" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-row gap-x-4">
-            <div className="w-96">
+            <div className="lg:w-96">
             <Label>Cursos</Label>
               <Select
                 className="bg-gray-100 rounded-xl w-full outline-none"

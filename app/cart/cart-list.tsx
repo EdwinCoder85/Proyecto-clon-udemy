@@ -38,14 +38,6 @@ export default function CartList() {
         });
         window.location.href = data.url;
       }
-
-      // if (res.ok) {
-      //   cart.forEach((product) => {
-      //     removeFromCart(product);
-      //     localStorage.removeItem("cartStore");
-      //   });
-      //   window.location.href = data.url;
-      // }
     } catch (error) {
       toast.error("Algo salió mal. Inténtalo de nuevo.");
     }
@@ -54,21 +46,21 @@ export default function CartList() {
   return (
     <section className="border-t-0 border-slate-600">
       <div className="my-10">
-        <h1 className="text-4xl font-bold text-[#2d2f31]">Cesta</h1>
+        <h1 className="text-4xl font-bold text-[#2d2f31] p-4 lg:p-0">Cesta</h1>
       </div>
-      <div className="flex justify-between gap-x-10 max-w-screen-2xl">
-        <div className="">
-          {cart.length == 0 ? (
-            <div className="flex flex-col justify-center items-center mx-44 my-10">
+      <div className="flex flex-col lg:flex-row justify-between gap-x-10 max-w-screen-2xl px-8 py-6 lg:p-0">
+        <div className="w-full">
+          {cart.length === 0 ? (
+            <div className="flex flex-col justify-center items-center mx-auto my-10">
               <Image
                 src={cartEmpty}
                 alt="Carrito vacio"
-                className="w-60 h-60 object-cover object-center"
+                className="w-32 h-32 lg:w-60 lg:h-60 object-cover object-center"
                 width={800}
                 height={800}
                 priority={true}
               />
-              <span className="font-bold mt-5">No hay cursos en la cesta</span>
+              <span className="font-bold mt-5 text-center">No hay cursos en la cesta</span>
             </div>
           ) : (
             <span className="font-bold">{cart.length} cursos en la cesta</span>
@@ -121,7 +113,7 @@ export default function CartList() {
             </article>
           ))}
         </div>
-        <div className="flex flex-col gap-y-4">
+        <div className="flex flex-col gap-y-4 md:w-1/2">
           <span className="text-xl font-bold">Total:</span>
           <span className="text-3xl font-bold">
             {cart

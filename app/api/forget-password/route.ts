@@ -28,8 +28,8 @@ export async function POST(request: NextRequest) {
     }
 
     const tokenData = {
-      email: userFind.email,
-      userId: userFind.id,
+      // email: userFind.email,
+      // userId: userFind.id,
       userName: userFind.username
     };
 

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function CategoryPage() {
   return (
-    <section className="h-[calc(100vh-7rem)] flex flex-col items-center justify-center">
+    <section className="h-[calc(100vh-7rem)] flex items-center justify-center">
       <CategoryForm  />
     </section>
   );

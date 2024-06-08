@@ -86,7 +86,7 @@ export const dashboardRoutes = [
   },
   {
     href: "/dashboard/popularThemes",
-    text: "Crear curso como popular",
+    text: "Crear tema popular",
     roles: ["admin"],
     icon: MdOutlineUpdate,
   },

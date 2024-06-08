@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-// import Navbar from "@/components/shared/NavbarSignIn";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/context/Providers";
@@ -19,13 +18,12 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const session = await auth();
 
   return (
     <Providers>
       <html lang="en">
         <body className={inter.className}>
-          {/* {session ? <NavbarSignOut /> : <NavbarSignIn />} */}
+          {/* Header */}
           <Navbar />
           <main>
           {children}

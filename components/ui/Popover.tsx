@@ -55,7 +55,8 @@ export function MyPopover({ session }: any) {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute left-1/6 z-10 mt-3 w-screen max-w-sm -translate-x-1/6 transform px-4 sm:px-0 lg:max-w-60">
+              {/* <Popover.Panel className="absolute lg:left-1/6 z-10 mt-3 w-screen max-w-sm lg:-translate-x-1/6 transform px-4 sm:px-0 lg:max-w-60"> */}
+              <Popover.Panel className="absolute left-0 lg:left-1/6 z-10 mt-3 lg:w-screen max-w-sm transform -translate-x-1/2 lg:-translate-x-1/6 px-4 sm:px-0 lg:max-w-60">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
                   <div className="relative grid gap-8 bg-white p-5">
                     {solutions.map((item) => (
@@ -65,9 +66,9 @@ export function MyPopover({ session }: any) {
                         onClick={item.onClick}
                         className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-primary-50 focus:outline-none focus-visible:ring focus-visible:ring-primary-500/50"
                       >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-primary-600 text-white sm:h-12 sm:w-12">
+                        <div className="flex h-8 w-8 lg:h-10 lg:w-10 shrink-0 items-center justify-center bg-primary-600 text-white sm:h-12 sm:w-12">
                           <item.icon
-                            className="mx-4 h-6 w-6 shrink-0"
+                            className="mx-4 h-4 w-4 lg:h-6 lg:w-6 shrink-0"
                             aria-hidden="true"
                           />
                         </div>
@@ -82,13 +83,13 @@ export function MyPopover({ session }: any) {
                       </Link>
                     ))}
                   </div>
-                  <div className="bg-primary-600 p-4">
+                  <div className="bg-primary-600 p-2 lg:p-4">
                     <span className="flex items-center">
-                      <span className="text-lg font-bold">
+                      <span className="text-sm lg:text-lg font-bold">
                         Course Programming
                       </span>
                     </span>
-                    <span className="block text-sm text-gray-100">
+                    <span className="block text-xs lg:text-sm text-gray-100">
                       Plataforma educativa práctica.
                     </span>
                   </div>

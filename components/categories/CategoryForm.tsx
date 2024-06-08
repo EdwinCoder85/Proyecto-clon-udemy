@@ -59,8 +59,8 @@ export default function CategoryForm({ category }: Props) {
   return (
     <section className="h-[calc(100vh-7rem)] flex flex-col items-center justify-center">
       <Card>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="w-96">
+        <form className="w-[300px] lg:w-full" onSubmit={handleSubmit(onSubmit)}>
+          <div className="lg:w-96">
             <Label>Nombre de la Categoría</Label>
             <Input
               type="text"

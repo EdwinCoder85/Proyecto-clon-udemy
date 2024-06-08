@@ -73,16 +73,16 @@ export default function RegisterForm() {
   };
 
   return (
-    <div>
+    <div className="p-4">
       <div className="mb-5">
         <h2 className="text-2xl font-semibold">Register</h2>
         <p className="text-gray-500 text-sm">
           Please enter your email and password to enter the application
         </p>
       </div>
-      <form className="w-full" onSubmit={ handleSubmit( onSubmit ) }>
-        <div className="flex flex-row gap-x-4">
-          <div className="w-96">
+      <form className="w-[300px] lg:w-full" onSubmit={ handleSubmit( onSubmit ) }>
+        <div className="flex flex-col lg:flex-row gap-x-4 lg:py-6">
+          <div className="lg:w-80">
             <div className="flex flex-col my-2">
               <Input
                 type="text"
@@ -129,22 +129,22 @@ export default function RegisterForm() {
             </div>
             <div className="flex justify-evenly my-2 mb-4">
               <div className="flex place-content-center gap-x-2">
-                <Input
+                <input
                   { ...register( "role" ) }
                   type="radio"
                   value="admin"
                   className="w-6 h-6 border ring-0 border-gray-200 text-blue-600 disabled:text-gray-300 outline-none focus:ring-0 focus:ring-offset-0 cursor-pointer"
                 />
-                <Label>Admin</Label>
+                <label>Admin</label>
               </div>
               <div className="flex place-content-center gap-x-2">
-                <Input
+                <input
                   { ...register( "role" ) }
                   type="radio"
                   value="user"
                   className="w-6 h-6 border ring-0 border-gray-200 text-blue-600 disabled:text-gray-300 outline-none focus:ring-0 focus:ring-offset-0 cursor-pointer"
                 />
-                <Label>User</Label>
+                <label>User</label>
               </div>
             </div>
             { errors.role && (
@@ -153,7 +153,7 @@ export default function RegisterForm() {
               </span>
             ) }
           </div>
-          <div className="w-96">
+          <div className="lg:w-80">
             <Input
               type="file"
               { ...register( "image", {
@@ -175,7 +175,7 @@ export default function RegisterForm() {
                 </span>
               ) }
             </div>
-            <div className="bg-gray-100 rounded-xl p-4 my-4 h-60">
+            <div className="bg-gray-100 rounded-xl p-4 my-4 h-60 w-[300px] md:w-[450px] lg:w-full">
               { file && (
                 <Image
                   src={ URL.createObjectURL( file ) }

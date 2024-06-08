@@ -9,7 +9,7 @@ export default function CourseCard({ course }: { course: Course }) {
 
   return (
     <div className="group relative flex flex-col overflow-hidden bg-white">
-      <div className="flex flex-col items-start space-y-[1px] w-60">
+      <div className="flex flex-col items-start space-y-[1px] w-56">
         <Link key={course.id} href={`/course/${course.id}`}>
           <Image
             src={course.imageUrl}

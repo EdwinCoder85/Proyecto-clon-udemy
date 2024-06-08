@@ -15,7 +15,7 @@ export default async function CoursePage() {
   const categories  = await getAllCategories();
 
   return (
-    <section className="h-[calc(100vh-7rem)] flex flex-col items-center justify-center overflow-hidden overflow-y-scroll">
+    <section className="my-4 h-full lg:h-[calc(100vh-7rem)] flex items-center justify-center overflow-hidden overflow-y-scroll">
       <CourseForm categories ={categories} />
     </section>
   );
