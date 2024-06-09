@@ -34,12 +34,12 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
   const chapters = await getChaptersByCourseId(params.id);
 
   return (
-    <div className="bg-[#2d2f31] w-full h-72 lg:h-96">
+    <div className="bg-[#2d2f31] w-full h-96">
       <div className="flex flex-col lg:flex-row mx-auto max-w-screen-lg">
         <div className="lg:w-2/3 lg:h-[1500px]">
-          <div className="text-white p-5 lg:py-10 lg:px-5 flex flex-col h-72 lg:h-96">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">{singleCourse.title}</h2>
-            <h3 className="text-lg lg:text-xl mb-4">{singleCourse.description}</h3>
+          <div className="text-white p-5 lg:py-10 lg:px-5 flex flex-col h-96">
+            <h2 className="text-xl lg:text-3xl font-bold mb-4">{singleCourse.title}</h2>
+            <h3 className="text-base lg:text-xl mb-4">{singleCourse.description}</h3>
             <div className="flex justify-start items-center gap-x-2 mb-4">
               {singleCourse.bestSeller ? (
                 <span className="text-xs text-slate-700 font-semibold bg-amber-200 py-1 px-2">

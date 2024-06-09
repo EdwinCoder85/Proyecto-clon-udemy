@@ -53,9 +53,9 @@ export default function ChangePasswordForm() {
   return (
     <div className="w-full max-w-md">
       <div className="mb-5">
-        <h2 className="text-2xl font-semibold">Change password</h2>
+        <h2 className="text-2xl font-semibold">Cambiar la contraseña</h2>
         <p className="text-gray-500 text-sm">
-          Please enter your new password to enter the application
+        Por favor ingrese su nueva contraseña para ingresar a la aplicación.
         </p>
       </div>
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>

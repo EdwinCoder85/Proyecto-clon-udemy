@@ -49,9 +49,9 @@ export default function ForgotPasswordForm () {
   return (
     <div className="w-full max-w-md p-4">
       <div className="mb-5">
-        <h2 className="text-2xl font-semibold">Forgot password?</h2>
+        <h2 className="text-2xl font-semibold">¿Has olvidado tu contraseña?</h2>
         <p className="text-gray-500 text-sm">
-          Please enter your email to create new password
+        Por favor ingrese su correo electrónico para crear una nueva contraseña.
         </p>
       </div>
       <form className="w-[300px] lg:w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -67,21 +67,21 @@ export default function ForgotPasswordForm () {
         {isSubmitting ? "Enviando..." : "Enviar instrucciones"}
         </Button>
         <div className="mt-5 mb-5 flex items-center justify-center gap-x-2">
-          <p className="text-gray-500">have account?</p>
+          <p className="text-gray-500">¿Tienes cuenta?</p>
           <Link
             href="/auth/login"
             className="font-semibold hover:text-primary-600 transition-colors duration-300"
           >
-            Login
+            Acceso
           </Link>
         </div>
         <div className="flex items-center justify-center gap-x-2">
-          <p className="text-gray-500">Dont have account?</p>
+          <p className="text-gray-500">¿No tienes cuenta?</p>
           <Link
             href="/auth/register"
             className="font-semibold hover:text-primary-600 transition-colors duration-300"
           >
-            Register
+            Registrar
           </Link>
         </div>
       </form>

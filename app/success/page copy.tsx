@@ -1,9 +1,15 @@
+"use client"
+
 import prisma from "@/libs/prisma";
 import { auth } from '@/auth.config';
+import { useState } from 'react';
 import Confetti from '@/utils/Confetti';
+import { useSession } from 'next-auth/react';
 
-async function  SuccessPage() {
-  const session = await auth();
+function SuccessPage() {
+  // const session = await auth();
+  const {data: session} =useSession()
+  const [showConfetti, setShowConfetti] = useState<boolean>(true);
 
   const user = await prisma.user.findUnique({
     where: {
@@ -20,10 +26,8 @@ async function  SuccessPage() {
           <h1 className="text-4xl font-bold">¡Pago exitoso!</h1>
           <h1>Gracias por tu compra</h1>
         </div>
-        <Confetti/>
+        {showConfetti && <Confetti />}
       </div>
   );
 }
-
-
 export default SuccessPage;

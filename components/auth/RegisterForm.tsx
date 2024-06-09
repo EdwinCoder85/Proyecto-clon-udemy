@@ -75,9 +75,9 @@ export default function RegisterForm() {
   return (
     <div className="p-4">
       <div className="mb-5">
-        <h2 className="text-2xl font-semibold">Register</h2>
+        <h2 className="text-2xl font-semibold">Registrarse</h2>
         <p className="text-gray-500 text-sm">
-          Please enter your email and password to enter the application
+        Por favor ingresa los datos en la aplicación.
         </p>
       </div>
       <form className="w-[300px] lg:w-full" onSubmit={ handleSubmit( onSubmit ) }>
@@ -192,7 +192,7 @@ export default function RegisterForm() {
             rounded-md border-0 text-sm font-semibold bg-secondInk
             text-slate-700 hover:bg-secondInk-700 text-center transition-colors"
                 >
-                  Seleccionar archivos
+                  Subir imagen
                 </label>
               ) : (
                 <label

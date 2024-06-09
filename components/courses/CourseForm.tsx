@@ -239,7 +239,7 @@ export default function CourseForm({ course, categories }: Props) {
                   </span>
                 )}
               </div>
-              <div className="bg-gray-100 rounded-xl p-4 my-4 h-60">
+              <div className="bg-gray-100 rounded-xl p-4 my-4 h-60 w-[300px] md:w-[450px] lg:w-full">
                 {previewUrl && (
                   <div className="bg-gray-100 rounded-xl p-4 my-4">
                     <Image

@@ -36,22 +36,22 @@ export default async function DashboardUsersPage() {
   // }
 
   return (
-    <div className="px-4 py-6 sm:px-6 lg:px-8 h-[calc(100vh-5.4rem)] w-[calc(100vw-15rem)] overflow-y-scroll select-none">
+    <div className="px-4 py-6 sm:px-6 lg:px-8 h-[calc(100vh-5.4rem)] lg:w-[calc(100vw-15rem)] overflow-y-scroll select-none">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-3xl text-center font-bold leading-6 text-primary-600">
+          <h1 className="text-xl lg:text-3xl text-center font-bold leading-6 text-primary-600">
             Lista de usuarios
           </h1>
           {/* <p className="mt-2 text-sm text-primary">Lista de usuarios</p> */}
         </div>
-        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-          <Button href="/dashboard/users/create">Crea Usuario</Button>
+        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none flex items-center justify-center">
+          <Button className="w-40 text-sm lg:text-lg" href="/dashboard/users/create">Crea Usuario</Button>
         </div>
       </div>
-      <div className="mt-8 flow-root">
+      <div className="mt-4 lg:mt-8 flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg mx-4 lg:mx-0">
               <UserTable users={updatedUsers} />
             </div>
           </div>

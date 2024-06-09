@@ -6,6 +6,7 @@ import { cn } from '@/libs/utils';
 import { navbarRoutes } from '@/routes/routes';
 import { useSession } from 'next-auth/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import CartIcon from './CartIcon';
 
 interface MenuMobileProps {
   isOpen: boolean;
@@ -18,18 +19,18 @@ export const MenuMobile = ({ isOpen, onClose }: MenuMobileProps) => {
     <>
       <div
         className={cn(
-          "fixed right-0 w-full h-full lg:hidden bg-background-foreground z-50 flex flex-col items-center justify-center transition-all",
+          "fixed right-0 w-full h-full lg:hidden bg-background-foreground z-50 flex flex-col items-center justify-center transition-all duration-300",
           isOpen ? "top-0 delay-300" : "-top-full"
         )}
       >
-        <ul className="flex flex-col items-center gap-y-6">
+        <ul className={cn("flex flex-col items-center gap-y-6 menu-items", isOpen ? "h-auto" : "h-0")}>
           {session &&
             navbarRoutes.map(
               (route) =>
                 route?.auth.includes(true) && (
                   <li key={route.href} className="text-xl text-white">
                     <Link href={route.href} onClick={() => onClose(false)}>
-                      {route.text}
+                    {route.text === "Carrito" ? <CartIcon /> : route.text}
                     </Link>
                   </li>
                 )
@@ -41,13 +42,15 @@ export const MenuMobile = ({ isOpen, onClose }: MenuMobileProps) => {
                 route.auth.includes(false) && (
                   <li key={route.href} className="text-xl text-white">
                     <Link href={route.href} onClick={() => onClose(false)}>
-                      {route.text === "Iniciar Sesión" ? (
-                        <span className="bg-white px-2 py-1 md:px-2 md:py-3 text-primary-600 font-bold">
-                          {route.text}
-                        </span>
-                      ) : (
-                        route.text
-                      )}
+                    {route.text === "Iniciar Sesión" ? (
+                            <span className="bg-white px-2 py-1 md:px-2 md:py-3 text-primary-600 font-semibold">
+                              {route.text}
+                            </span>
+                          ) : route.text === "Carrito" ? (
+                            <CartIcon />
+                          ) : (
+                            route.text
+                          )}
                     </Link>
                   </li>
                 )

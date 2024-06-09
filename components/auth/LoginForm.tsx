@@ -43,16 +43,19 @@ export default function LoginForm() {
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      toast.error("Ocurrió un error al iniciar sesión. Inténtalo de nuevo más tarde.");
+      toast.error(
+        "Ocurrió un error al iniciar sesión. Inténtalo de nuevo más tarde."
+      );
     }
   };
 
   return (
     <div className="w-full max-w-md p-4">
       <div className="mb-5">
-        <h2 className="text-2xl font-semibold">Welcome, Back!</h2>
+        <h2 className="text-2xl font-semibold">¡Bienvenido de nuevo!</h2>
         <p className="text-gray-500 text-sm">
-          Please enter your email and password to enter the application
+          Por favor ingresa tu correo electrónico y contraseña para ingresar a
+          la aplicación.
         </p>
       </div>
       <form className="w-[300px] lg:w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -63,9 +66,15 @@ export default function LoginForm() {
           )}
         </div>
         <div className="flex flex-col my-2">
-          <Input type="password" placeholder="Password" {...register("password")} />
+          <Input
+            type="password"
+            placeholder="Password"
+            {...register("password")}
+          />
           {errors.password && (
-            <span className="text-red-500 text-xs">{errors.password.message}</span>
+            <span className="text-red-500 text-xs">
+              {errors.password.message}
+            </span>
           )}
         </div>
         <div className="flex justify-end mb-5 w-[300px] md:w-[450px] lg:w-full">
@@ -73,19 +82,19 @@ export default function LoginForm() {
             href="/auth/forget-password"
             className="font-semibold hover:text-primary-600 transition-colors duration-300"
           >
-            forgot password?
+            ¿Has olvidado tu contraseña?
           </Link>
         </div>
         <Button type="submit" className="block mt-2" disabled={isSubmitting}>
           {isSubmitting ? <Loading title={"Procesando..."} /> : "Login"}
         </Button>
         <div className="mt-5 mb-10 flex items-center justify-center gap-x-2 w-[300px] md:w-[450px] lg:w-full">
-          <p className="text-gray-500">dont have account?</p>
+          <p className="text-gray-500">¿No tienes cuenta?</p>
           <Link
             href="/auth/register"
             className="font-semibold hover:text-primary-600 transition-colors duration-300"
           >
-            Register
+            Registrar
           </Link>
         </div>
         <div className="mb-5 w-[300px] md:w-[450px] lg:w-full">

@@ -45,8 +45,8 @@ export default function CartList() {
 
   return (
     <section className="border-t-0 border-slate-600">
-      <div className="my-10">
-        <h1 className="text-4xl font-bold text-[#2d2f31] p-4 lg:p-0">Cesta</h1>
+      <div className="mt-4 lg:my-10">
+        <h1 className="text-2xl lg:text-4xl font-bold text-[#2d2f31] p-4 lg:p-0">Cesta</h1>
       </div>
       <div className="flex flex-col lg:flex-row justify-between gap-x-10 max-w-screen-2xl px-8 py-6 lg:p-0">
         <div className="w-full">
@@ -71,7 +71,7 @@ export default function CartList() {
               className="flex flex-col bg-white border-t border-slate-300 p-2"
             >
               <div className="flex gap-x-4 justify-between">
-                <div className="flex gap-x-4 w-auto">
+                <div className="flex flex-col gap-x-4 w-auto lg:flex-row">
                   <Image
                     src={course.imageUrl}
                     alt={course.title}
@@ -81,7 +81,7 @@ export default function CartList() {
                     priority={true}
                   />
                   <div>
-                    <h2 className="font-bold">{course.title}</h2>
+                    <h2 className="text-sm mt-2 lg:mt-0 lg:text-base font-bold">{course.title}</h2>
                     <p className="text-xs">Por {course.user?.username}</p>
                     <div className="flex space-x-1">
                       <h3 className="text-orange-800 font-bold">

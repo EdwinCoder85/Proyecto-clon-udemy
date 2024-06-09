@@ -25,7 +25,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className={`fixed lg:static top-20 lg:top-0 w-auto h-[calc(100vh-5.4rem)] lg:h-full bg-slate-100 border border-primary-600 p-4 flex flex-col justify-between transition-all z-50 ${
+      <div className={`fixed lg:static top-20 lg:top-0 w-auto h-[calc(100vh-5rem)] bg-slate-100 border border-primary-600 p-4 flex flex-col justify-between transition-all z-50 ${
             showMenu ? "left-0" : "-left-full lg:left-0"
           }`}>
         <div className="flex flex-col w-full">
@@ -44,10 +44,10 @@ export default function Sidebar() {
                           //     : "text-primary-600 hover:text-white hover:bg-primary-600",
                           //   "group flex gap-3 rounded-xl transition-colors py-2 px4 text-base leading-6 font-bold"
                           // )}
-                          className="text-primary-600 hover:text-white hover:bg-primary-600 group flex gap-3 rounded-xl transition-colors py-2 px-4 text-base leading-6 font-bold"
+                          className="text-primary-600 hover:text-white hover:bg-primary-600 group flex gap-3 rounded-xl transition-colors py-2 px-2 text-base leading-6 font-bold"
                         >
                           <item.icon
-                            className="mx-4 h-6 w-6 shrink-0"
+                            className="mx-2 h-6 w-6 shrink-0"
                             aria-hidden="true"
                           />
                           {item.text}
@@ -66,7 +66,7 @@ export default function Sidebar() {
       <button
         type="button"
         onClick={toggleMenu}
-        className="bg-slate-100 text-primary-600 fixed bottom-6 right-4 p-2 text-lg rounded-full z-50 ring-primary-600 ring-1 lg:hidden"
+        className="bg-slate-100 text-primary-600 fixed bottom-6 right-4 p-2 text-lg rounded-full z-10 ring-primary-600 ring-1 lg:hidden"
       >
         {showMenu ? <RiCloseLine/> : <RiMenu3Fill/>}
       </button>

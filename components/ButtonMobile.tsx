@@ -14,7 +14,7 @@ export default function ButtonMobile() {
     <button
       type="button"
       onClick={toogleMenu}
-      className="bg-primary-600 text-white fixed bottom-8 right-6 p-2 text-lg rounded-full z-50"
+      className="bg-primary-600 text-white fixed bottom-8 right-6 p-2 text-lg rounded-full z-40"
     >
       {showMenu ? <RiCloseLine /> : <RiMenu3Fill />}
     </button>

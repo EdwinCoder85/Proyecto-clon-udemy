@@ -1,26 +1,25 @@
 "use client";
 
+// ProductTable.tsx
+import React, { useState } from "react";
 import { Course } from "@prisma/client";
 import { Avatar, Button, Modal, Table } from "../ui";
-import { useState } from "react";
 import { toast } from "sonner";
-import { deleteCourse } from '@/actions/courses-actions';
-import { classNames } from '@/libs/classNames';
+import { deleteCourse } from "@/actions/courses-actions";
 
 interface Props {
   courses: Course[];
 }
 
-function ProductTable({ courses }: Props) {
+function ProductTable ({ courses }: Props) {
   const [open, setOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(
     null
   );
 
   async function handleDeleteCourse(id: string) {
+    const res = await deleteCourse(id);
 
-    const res = await deleteCourse(id)
-   
     if (res.ok) {
       toast.success("Usuario eliminado satisfactoriamente");
     } else {
@@ -35,16 +34,20 @@ function ProductTable({ courses }: Props) {
       header: "Nombre",
       accessorKey: "title",
     },
-    {
-      header: "Descripción",
-      accessorKey: "description",
-    },
+    // {
+    //   header: 'Descripción',
+    //   accessorKey: 'description',
+    // },
     {
       header: "Imagen",
       accessorKey: "imageUrl",
       cell: (info: any) => {
         const { imageUrl } = info.row.original;
-        return <Avatar src={imageUrl} alt="imagen" />;
+        return (
+          <div className="flex justify-center items-center">
+            <Avatar src={imageUrl} alt="imagen" />
+          </div>
+        );
       },
     },
     {
@@ -56,10 +59,10 @@ function ProductTable({ courses }: Props) {
       cell: (info: any) => {
         const { id } = info.row.original;
         return (
-          <div className="flex gap-x-2">
-            <Button href={`/dashboard/courses/edit/${id}`}>Editar</Button>
+          <div className="flex flex-col lg:flex-row gap-y-2 lg:gap-x-2 justify-center items-center">
+            <Button className="text-sm lg:text-lg" href={`/dashboard/courses/edit/${id}`}>Editar</Button>
             <Button
-              className="bg-red-600 hover:bg-red-700 rounded-xl"
+              className="bg-red-600 hover:bg-red-700 rounded-xl text-sm lg:text-lg"
               onClick={() => {
                 setSelectedProductId(id);
                 setOpen(true);
@@ -75,14 +78,16 @@ function ProductTable({ courses }: Props) {
 
   return (
     <>
-      <Table data={courses} columns={columns} />
+      <div className="overflow-x-auto">
+        <Table data={courses} columns={columns} />
+      </div>
       <Modal open={open} setOpen={setOpen}>
-        <h3 className="text-primary-600 font-bold h3">
-          Estas Seguro de querer eliminar?
+        <h3 className="text-primary-600 font-bold text-xl">
+          ¿Estás seguro de querer eliminar?
         </h3>
         <p className="text-gray-500">
-          Esta accion no se puede deshacer y se perdera toda la informacion del
-          producto
+          Esta acción no se puede deshacer y se perderá toda la información del
+          producto.
         </p>
         <div className="flex gap-x-2 justify-end mt-2">
           <Button
@@ -92,13 +97,13 @@ function ProductTable({ courses }: Props) {
               handleDeleteCourse(selectedProductId);
             }}
           >
-            Si, Eliminar
+            Sí, Eliminar
           </Button>
           <Button onClick={() => setOpen(false)}>Cancelar</Button>
         </div>
       </Modal>
     </>
   );
-}
+};
 
 export default ProductTable;

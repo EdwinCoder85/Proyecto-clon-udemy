@@ -33,38 +33,42 @@ function UserTable({ users }: Props) {
       accessorKey: "image",
       cell: (info: any) => {
         const { image } = info.row.original;
-        return <Avatar src={image} alt="imagen" />;
+        return (
+          <div className="flex justify-center items-center">
+            <Avatar src={image} alt="imagen" />
+          </div>
+        );
       },
     },
     {
       header: "Usuario",
       accessorKey: "username",
     },
-    {
-      header: "Correo",
-      accessorKey: "email",
-    },
-    {
-      header: "Correo confirmado",
-      accessorKey: "emailVerified",
-    },
+    // {
+    //   header: "Correo",
+    //   accessorKey: "email",
+    // },
+    // {
+    //   header: "Correo confirmado",
+    //   accessorKey: "emailVerified",
+    // },
     {
       header: "Rol",
       accessorKey: "role",
     },
-    {
-      header: "Creado",
-      accessorKey: "formattedCreatedAt",
-    },
+    // {
+    //   header: "Creado",
+    //   accessorKey: "formattedCreatedAt",
+    // },
     {
       header: "Acciones",
       cell: (info: any) => {
         const { id } = info.row.original;
         return (
-          <div className="flex gap-x-2">
-            <Button href={`/dashboard/users/edit/${id}`}>Editar</Button>
+          <div className="flex flex-col lg:flex-row gap-y-2 lg:gap-x-2 justify-center items-center">
+            <Button className="text-sm lg:text-lg" href={`/dashboard/users/edit/${id}`}>Editar</Button>
             <Button
-              className="bg-red-600 hover:bg-red-700 rounded-xl"
+              className="bg-red-600 hover:bg-red-700 rounded-xl text-sm lg:text-lg"
               onClick={() => {
                 setSelectedUserId(id);
                 setOpen(true);
