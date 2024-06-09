@@ -60,9 +60,9 @@ function ProductTable ({ courses }: Props) {
         const { id } = info.row.original;
         return (
           <div className="flex flex-col lg:flex-row gap-y-2 lg:gap-x-2 justify-center items-center">
-            <Button className="text-sm lg:text-lg" href={`/dashboard/courses/edit/${id}`}>Editar</Button>
+            <Button className="text-sm lg:text-lg w-20" href={`/dashboard/courses/edit/${id}`}>Editar</Button>
             <Button
-              className="bg-red-600 hover:bg-red-700 rounded-xl text-sm lg:text-lg"
+              className="bg-red-600 hover:bg-red-700 rounded-xl text-sm lg:text-lg w-20 lg:w-max"
               onClick={() => {
                 setSelectedProductId(id);
                 setOpen(true);

@@ -25,7 +25,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className={`fixed lg:static top-20 lg:top-0 w-auto h-[calc(100vh-5rem)] bg-slate-100 border border-primary-600 p-4 flex flex-col justify-between transition-all z-50 ${
+      <div className={`fixed lg:static top-20 lg:top-0 w-auto h-[calc(100vh-5rem)] bg-slate-100 border border-primary-600 p-4 flex flex-col justify-between transition-all duration-200 z-10 ${
             showMenu ? "left-0" : "-left-full lg:left-0"
           }`}>
         <div className="flex flex-col w-full">
@@ -38,6 +38,7 @@ export default function Sidebar() {
                       <li key={item.text} className="list-none">
                         <Link
                           href={item.href}
+                          onClick={toggleMenu}
                           // className={classNames(
                           //   pathname === item.href
                           //     ? "bg-white text-primary-600"
