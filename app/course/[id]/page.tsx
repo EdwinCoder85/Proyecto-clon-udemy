@@ -14,10 +14,10 @@ import {
 import ReviewGallery from "@/components/reviews/ReviewGallery";
 import StartRate from "@/components/StartRate";
 import ReviewForm from "@/components/reviews/ReviewForm";
-import { Price } from "@/components/shared/Price";
 import { getSingleCourse } from "@/actions/getSingleCourse";
 import { Accordion } from "@/components/ui";
 import { getChaptersByCourseId } from "@/actions";
+import { Price } from '@/components/Price';
 
 export const metadata: Metadata = {
   title: "Nextfull - Ver detalle de curso",

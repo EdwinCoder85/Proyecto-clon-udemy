@@ -3,7 +3,7 @@
 import { Course } from "@/interfaces";
 import { useCartStore } from "@/store/cartStore";
 import { toast } from "sonner";
-import { Button } from "../ui";
+import { Button } from './ui';
 
 export const Price = ({ course }: { course: Course }) => {
   const addToCart = useCartStore((state) => state.addToCart);
